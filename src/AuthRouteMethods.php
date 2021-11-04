@@ -64,6 +64,9 @@ class AuthRouteMethods
             $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
             $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
             $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+            $this->get('.well-known/change-password', function(){
+                return redirect()->route('password.request');
+            });
         };
     }
 
